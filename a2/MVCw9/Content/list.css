@@ -1,0 +1,41 @@
+﻿.sidebar {
+    width: 90px; /* 定义侧边栏宽度 */
+    background-color: #333; /* 定义侧边栏背景颜色 */
+    color: #fff; /* 定义文本颜色 */
+    position: fixed; /* 将侧边栏固定在左侧 */
+    top: 0px;
+    left: 0px;
+    height: 100%; /* 设置侧边栏高度，以占据整个视口高度 */
+    overflow-y: auto; /* 如果内容高度溢出，允许滚动 */
+
+}
+
+    .sidebar ul {
+        list-style: none; /* 去除列表项的默认样式 */
+        padding: 0;
+    }
+
+    .sidebar li {
+        margin-top: 20px; /* 添加上边距 */
+    }
+
+    .sidebar a {
+        color: #fff; /* 定义链接文本颜色 */
+        text-decoration: none;
+        font-family: "Comic Sans MS", sans-serif;
+    }
+
+        .sidebar a:hover {
+            color: #FFFF00; /* 鼠标悬停时的背景颜色 */
+        }
+
+.container.body-content {
+    margin-left: 150px; /* 设置内容区域的左边距，留出侧边栏的宽度 */
+    padding: 20px; /* 可以根据需要进行调整，以提供适当的内边距 */
+}
+
+/* 如果你希望内容区域有最小宽度，可以添加以下样式 */
+.container.body-content {
+    min-width: 600px; /* 设置最小宽度 */
+}
+

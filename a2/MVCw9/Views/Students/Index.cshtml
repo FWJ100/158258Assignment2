@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Student>
+
+@{
+    ViewBag.Title = "Find Friends";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<style>
+    .eee {
+        text-align: center; /* 居中文本 */
+        margin-top: 20px; /* 顶部间距 */
+        margin-bottom: 20px; /* 底部间距 */
+        font-family: "Comic Sans MS", sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0; /* 调整表格上下间距 */
+        font-family: Arial, sans-serif; /* 更改表格字体 */
+    }
+
+        table th, table td {
+            border: 2px solid #660066; /* 表格边框样式 */
+            padding: 8px; /* 单元格内边距 */
+            text-align: left; /* 单元格文本左对齐 */
+        }
+
+        table tr:hover {
+            background-color: #FFCCCC; /* 鼠标悬停时的行背景颜色 */
+        }
+    /* 共用按钮样式 */
+    .button {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #660066; /* 背景颜色 */
+        color: #fff; /* 文本颜色 */
+        text-decoration: none;
+        border: 2px solid #FFFFFF; /* 边框样式 */
+        border-radius: 4px; /* 圆角 */
+        margin-right: 10px; /* 右边距 */
+    }
+
+        .button:hover {
+            color: #FFFF00;
+            background-color: #660999; /* 鼠标悬停时的背景颜色 */
+        }
+
+</style>
+
+<div class="eee">
+    <h2>Let's Make a Friend</h2>
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { @class = "button" })
+</p>
+<table class="table">
+    <h4>Find friends with the same interests!</h4>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Campus.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Campus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "button" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "button" })
+            </td>
+        </tr>
+    }
+
+
+</table>

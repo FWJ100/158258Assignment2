@@ -1,0 +1,65 @@
+
+@model PagedList.IPagedList<Person>
+@{
+    ViewBag.Title = "About";
+}
+@using PagedList
+@using PagedList.Mvc
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/pagebutton.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/personcontent.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/ppp.css">
+    <script type="text/javascript">
+        function validateSearchInput() {
+            var searchText = document.getElementById("search").value;
+            if (searchText.trim() === "") {
+                alert("You haven't entered text yet");
+                return false; // 阻止表单提交
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Can you remember them?</h1>
+
+    <img class="centered-image" src="@Url.Content("~/Images/pic1.jpg")" alt="pic1">
+
+    <div class="center-container">
+        <div class="search-box">
+            @using (Html.BeginForm("Index", "Person", FormMethod.Get, new { onsubmit = "return validateSearchInput();" }))
+            {
+                <input type="text" id="search" name="search" placeholder="Search...">
+                <input type="submit" value="Search">
+            }
+            @Html.ActionLink("Restore", "Index", "Person", null, new { @class = "restore-button" })
+        </div>
+    </div>
+
+    <div>
+        @foreach (var person in Model)
+        {
+            <div class="person-card">
+                <img src="@Url.Content(person.ImageUrl)" alt="@person.CName" />
+                <p class="bold-cname">@person.CName</p>
+                <p>Actor: @person.RealName</p>
+                <p>@person.Gender</p>
+                <p>@person.Else</p>
+            </div>
+        }
+    </div>
+
+    <div class="center-container">
+        <div class="search-box">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded })
+            <a href="https://validator.w3.org/nu/" target="_blank">HTML5 validator</a>
+            <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS validator</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

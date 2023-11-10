@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Friends</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/homebutton.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/list.css">
+</head>
+<body>
+    <link href="~/Content/colour.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            <div class="col-md-1 custom-right-align">
+                @Html.ActionLink("F·R·I·E·N·D·S", "Index", "TVShow", new { area = "" }, new { @class = "a-a" })
+            </div>
+            <div class="sidebar">
+                <ul class="nav flex-column">
+                    <div class="col-md-2">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">@Html.ActionLink("Home", "Index", "TVShow", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">@Html.ActionLink("About", "Index", "Person", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">@Html.ActionLink("Character", "Index", "UniversityCampus", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">@Html.ActionLink("Find Friends", "Index", "Students", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">@Html.ActionLink("Detailed", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Friends</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

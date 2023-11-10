@@ -1,0 +1,76 @@
+@model a2.Models.TVShow
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Home.css">
+
+<div class="logo">
+    <img src="/Images/logo.svg.jpg" alt="logo" />
+</div>
+
+
+<div class="cc-container">
+    <div class="cc">
+        <img src="/Images/top1.jpg" alt="top 1" />
+        <img src="/Images/top2.jpg" alt="top 2" />
+        <img src="/Images/top3.jpg" alt="top 3" />
+        <img src="/Images/top4.jpg" alt="top 4" />
+        <img src="/Images/top5.jpg" alt="top 5" />
+    </div>
+</div>
+
+<div class="text">
+    <h4><a href="https://en.wikipedia.org/wiki/Friends" target="_blank">Introduction</a></h4>
+    <p>
+        &nbsp;&nbsp;"Friends" is an American sitcom television series created by David Crane and Marta Kauffman and aired for 10 seasons from 1994 to 2004. The show uses six friends, including Rachel, Ross, Monica, Chandler, Joey and Phoebe as the main characters, telling various funny and touching stories about their life, work and experience in New York City.
+    </p>
+    <p>
+        &nbsp;&nbsp;The story revolves around the life adventures, friendships and romantic entanglements of these friends, and each episode is full of humor, tenderness and unforgettable moments. "Friends" is loved by audiences for its humorous dialogue, iconic characters and iconic situations. This drama also explores the themes of friendship, love and growth, and is deeply loved and resonated with the audience.
+    </p>
+    <p>
+        &nbsp;&nbsp;The show gained widespread recognition and high ratings during its run, becoming a classic sitcom that remains beloved today and continues to attract new generations of viewers.
+    </p>
+</div>
+
+
+<div class="title">There are 10 seasons:</div>
+
+<div class="dropdown-container">
+    @using (Html.BeginForm("Index", "TVShow", FormMethod.Get))
+    {
+        <div class="form-group">
+            @Html.DropDownList("selectedId", ViewBag.TVShowList as SelectList, "All")
+            <input type="submit" value="filter" />
+        </div>
+    }
+</div>
+
+@if (Model != null)
+{
+    <div class="tvshow">
+        <img src="@Model.ImageUrl" alt="@Model.Name" />
+        <div>
+            <h5>@Model.Name</h5>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+}
+else
+{
+    if (Model == null)
+    {
+        foreach (var tvShow in ViewBag.TVShowList.Items)
+        {
+            var tvShowItem = (a2.Models.TVShow)tvShow;
+            <div class="tvshow">
+                <img src="@tvShowItem.ImageUrl" alt="@tvShowItem.Name" />
+                <div>
+                    <h5>@tvShowItem.Name</h5>
+                    <p>@tvShowItem.Description</p>
+                </div>
+            </div>
+        }
+    }
+}

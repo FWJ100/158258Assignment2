@@ -1,0 +1,16 @@
+﻿/* 自定义字体样式 */
+.a-a {
+    font-size: 48px; /* 自定义字体大小，根据需要调整 */
+
+    color: #FF6666;
+    font-family: "Comic Sans MS", sans-serif;
+    text-decoration: none;
+}
+ /* 鼠标悬停时的链接颜色 */
+    .a-a:hover {
+        color: #FFFF00; /* 设置鼠标悬停链接的颜色 */
+    }
+
+.custom-right-align {
+    text-align: right; /* 右对齐文本 */
+}

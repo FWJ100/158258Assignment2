@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Detailed";
+}
+
+<style>
+    .logo {
+        display: block;
+        max-width: 500px; /* 调整最大宽度以更改大小 */
+        height: auto; /* 保持原始纵横比例 */
+        margin-top: 20px; /* 调整下方空隙的大小，根据需要进行调整 */
+    }
+</style>
+
+<main aria-labelledby="title">
+    <h4>Welcome to contact us!</h4>
+    <h6>Author: Weijia Fan</h6>
+    <h6>ID: 22009331</h6>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+
+    <div>
+        <p>What do you think of this website?</p>
+        <button id="goodButton">Good</button>
+        <button id="worseButton">Worse</button>
+    </div>
+
+    <img class="logo" src="@Url.Content("~/Images/logo.svg.jpg")" alt="logo">
+</main>
+
+<script type="text/javascript">
+    var goodCount = 0;
+    var worseCount = 0;
+
+    document.getElementById("goodButton").addEventListener("click", function () {
+        goodCount++;
+        displayTotalCount();
+    });
+
+    document.getElementById("worseButton").addEventListener("click", function () {
+        worseCount++;
+        displayTotalCount();
+    });
+
+    function displayTotalCount() {
+        var totalCount = goodCount + worseCount;
+        alert("Good Button Clicks: " + goodCount + "\nWorse Button Clicks: " + worseCount + "\nTotal Clicks: " + totalCount);
+    }
+</script>
+
